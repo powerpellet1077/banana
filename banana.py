@@ -35,7 +35,10 @@ if args.key:
         log.error("when declaring a key, please use the service flag to declare which service it should apply to")
 elif args.filename:
     k = load_keys(log)
-    fc = find_carrier(log, args.filename, k)
+    if args.service:
+        fc = find_carrier(log, args.filename, k, p=args.service)
+    else:
+        fc = find_carrier(log, args.filename, k)
     if fc:
         log.critical("uploaded: "+fc)
     else:

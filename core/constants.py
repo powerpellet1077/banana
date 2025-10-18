@@ -12,3 +12,6 @@ MB = 1048576
 #CATBOX
 CB_BLACKLISTED_FILES = ("exe", "scr", "cpl", "doc", "jar")
 CB_API = "https://catbox.moe/user/api.php"
+#FILEBIN
+FB_BLACKLISTED_FILES = ("exe") #PLEASE PLEASE MAKE A PR IF YOU GET ANY MORE ILLEGAL FILE EXTENSION ERRORS
+FB_API = "https://filebin.net/"

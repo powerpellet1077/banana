@@ -3,7 +3,7 @@ import loguru
 import os
 import time
 import json
-from core.constants import CB_API
+from core.constants import CB_API, FB_API
 from core.get_mimetype import get_mimetype
 def upload_cb(logger: loguru.logger, path, keys):
     logger.info("beginning send to catbox, this might take a while")
@@ -34,7 +34,7 @@ def upload_cb(logger: loguru.logger, path, keys):
 def upload_fb(logger: loguru.logger, path):
     logger.info("beginning send to filebin, this might take a while")
     f = {'file': (path, open(path, 'rb'), get_mimetype(logger, path))}
-    r = requests.post('https://filebin.net/', files=f, headers={"filename":os.path.basename(path).strip()})
+    r = requests.post(FB_API, files=f, headers={"filename":os.path.basename(path).strip()})
     if r.status_code==201:
         d=None
         try:
