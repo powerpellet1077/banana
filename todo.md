@@ -3,4 +3,5 @@
  - fix filebin support
  - imgbb support
  - dropbox support
- - litterbox (as promised)
+ - ~~litterbox (as promised)~~
+ - update support
