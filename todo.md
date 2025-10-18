@@ -5,3 +5,4 @@
  - dropbox support
  - ~~litterbox (as promised)~~
  - update support
+ - pastebin (or an alternative) support
