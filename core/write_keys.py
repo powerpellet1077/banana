@@ -5,7 +5,17 @@ import json
 def write_keys(logger:loguru.logger, cb=None):
     kk = load_keys(logger)
     if cb:
-        kk["cb"]=cb
+        if cb != "clear":
+            kk["cb"]=cb
+        elif cb == "clear":
+            try:
+                del kk["cb"]
+                logger.info("cleared key cb :D")
+            except KeyError:
+                logger.error("could not clear cb due to no cb key existing!")
+            except Exception as e:
+                logger.error("could not clear cb due to error: "+str(e))
+
     kp = get_keys_path(logger)
     if kp:
         try:

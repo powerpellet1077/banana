@@ -6,15 +6,21 @@ This program is planning to support <a href="https://www.dropbox.com/">DropBox</
 
 
 ### usage:
-To declare keys or userhashes, you can use the -k command to set the key for the service provided. (most services I am using will not require or need a userhash/api key so you can skip this if you want)
+To declare keys or userhashes, you can use the -k command to set the key for the service provided. (most services I am using will not require or need a userhash/api key so you can skip this if you want).
 
 ``banana -k MY_USERHASH -s cb``
+
+you can also clear any key/userhash like this:
+
+``banana -k clear -s cb``
+
+For reference, the keys and userhashes are stored in ``banana.json`` within the user's appdata/roaming folder. Because of this, this is why this program only (officially) supports windows at the moment, feel free to change/fix this in a pr.
 
 once the userhash is declared, the program will automatically use it for that service. To actually upload a file, use the -f flag and declare a path (absolute or relative)
 
 ``banana -f sick_ass_file.txt``
 
-you can also choose a service with -s and following with the abbreviation for the selected service, (in this case, catbox would be cb)
+you can choose a service with -s and following with the abbreviation for the selected service, (in this case, catbox would be cb)
 
 ``banana -f sick_ass_file.txt -s cb``
 
@@ -71,4 +77,4 @@ banana.py/47|2025-10-18T12:53:03.659121-0700|[ERROR] please provide a value
 
 Then the compilation was successful!
 
-Thank you for using my program and good luck with trying to figure out how to use it (i am not a good teacher :P)
+Thank you for using my program and good luck to you! (for any questions or concerns, please send me a dm at powerpellet1077 on discord)
