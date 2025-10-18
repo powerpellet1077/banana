@@ -1,4 +1,4 @@
-# banana <img src="banana.png" id="banana"></img>
+# banana <img src="smolnana.png" id="banana"></img>
 <hr>
 This is a program made to make uploading files and videos not a hassle.
 
