@@ -10,5 +10,7 @@ def find_carrier(logger:loguru.logger, path, keys=None):
         if s<MB*200 and not check_cb_blacklist(path):#catbox
             if keys:
                 return upload_cb(logger, path, keys)
+        else:
+            logger.error("no viable service found, make sure it's within the specifications!")
     else:
         logger.error("failed to find carrier due to path not being a file or existing")
