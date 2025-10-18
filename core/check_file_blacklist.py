@@ -6,4 +6,3 @@ def check_cb_blacklist(path):
         if o in CB_BLACKLISTED_FILES:
             return True
     return False
-
