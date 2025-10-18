@@ -1,5 +1,7 @@
-from core.constants import CB_BLACKLISTED_FILES, FB_BLACKLISTED_FILES
+from core.constants import CB_BLACKLISTED_FILES, FB_BLACKLISTED_FILES, LB_BLACKLISTED_FILES
 import os
+#copy and paste and copy and paste and copy and paste
+
 def check_cb_blacklist(path):
     f = os.path.basename(path).split(".")
     for o in f:
@@ -11,5 +13,12 @@ def check_fb_blacklist(path):
     f = os.path.basename(path).split(".")
     for o in f:
         if o in FB_BLACKLISTED_FILES:
+            return True
+    return False
+
+def check_lb_blacklist(path):
+    f = os.path.basename(path).split(".")
+    for o in f:
+        if o in LB_BLACKLISTED_FILES:
             return True
     return False

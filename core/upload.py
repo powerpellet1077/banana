@@ -3,7 +3,7 @@ import loguru
 import os
 import time
 import json
-from core.constants import CB_API, FB_API
+from core.constants import CB_API, FB_API, LB_API
 from core.get_mimetype import get_mimetype
 def upload_cb(logger: loguru.logger, path, keys):
     logger.info("beginning send to catbox, this might take a while")
@@ -15,7 +15,7 @@ def upload_cb(logger: loguru.logger, path, keys):
             "userhash": keys["cb"],
         }
     else:
-        logger.warning("no key specified, the file will live on with the stars..")
+        logger.warning("no key specified, this file will stay until the heat death of the universe.")
         d = {
             "reqtype": "fileupload"
         }
@@ -47,3 +47,26 @@ def upload_fb(logger: loguru.logger, path):
             return "https://filebin.net/"+d
     else:
         logger.error("failed to upload to filebin D: "+str(r.status_code)+"/"+r.text)
+
+def upload_lb(logger: loguru.logger, path, t):
+    logger.info("beginning send to litterbox, this might take a while")
+    f = open(path, "rb")
+    mt = get_mimetype(logger, path)
+    if t not in ["1h", "12h", "24h", "72h"]:
+        logger.warning("time not specified or incorrect format, defaulting to 1h")
+        t = "1h"
+    d = {
+        "reqtype": "fileupload",
+        "time": t
+    }
+    r = requests.post(LB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
+    if r.status_code == 200:
+        while True:
+            if r.text.strip():
+                return r.text.strip()
+            else:
+                logger.info("waiting for a repsonse from the site...")
+                r = requests.post(CB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
+                time.sleep(0.5)
+    else:
+        logger.error("failed to upload to litterbox D: " + str(r.status_code) + "/" + r.text)

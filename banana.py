@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(description="upload and share files quickly wit
 parser.add_argument("-f", "--filename", help="path of target file to upload")
 parser.add_argument("-s", "--service", help="select target service")
 parser.add_argument("-k", "--key", help="save key for service usage (catbox and dropbox)")
+parser.add_argument("-t", "--time", help="time set for temporary uploads, please only choose from options as said on the readme (you can ignore this argument if you are not using temporary file hosting)")
 args = parser.parse_args()
 #INITALIZATION
 import loguru
@@ -36,9 +37,9 @@ if args.key:
 elif args.filename:
     k = load_keys(log)
     if args.service:
-        fc = find_carrier(log, args.filename, k, p=args.service)
+        fc = find_carrier(log, args.filename, k, p=args.service, t=args.time)
     else:
-        fc = find_carrier(log, args.filename, k)
+        fc = find_carrier(log, args.filename, k, t=args.time)
     if fc:
         log.critical("uploaded: "+fc)
     else:
