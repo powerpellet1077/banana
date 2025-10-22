@@ -66,7 +66,7 @@ def upload_lb(logger: loguru.logger, path, t):
                 return r.text.strip()
             else:
                 logger.info("waiting for a repsonse from the site...")
-                r = requests.post(CB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
+                r = requests.post(LB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
                 time.sleep(0.5)
     else:
         logger.error("failed to upload to litterbox D: " + str(r.status_code) + "/" + r.text)
