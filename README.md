@@ -72,7 +72,7 @@ banana
 If you got a response similar to this:
 
 ```
-banana.py/47|2025-10-18T12:53:03.659121-0700|[ERROR] please provide a value
+[banana][ERROR] please provide a value
 ```
 
 Then the compilation was successful!

@@ -22,7 +22,7 @@ from sys import stdout
 log = loguru.logger
 #really inefficient, someone make this look nicer please
 log.remove()
-log.add(sink, colorize=True, format=YELLO+"{file}/{line}|{time}"+YELLO_CLOSE+"|<level>[{level}] {message}</level>")
+log.add(sink, colorize=True, format=YELLO+"[{module}]"+YELLO_CLOSE+"<level>[{level}] {message}</level>")
 log.level("WARNING", color=YELLO)
 log.level("ERROR", color=RED)
 log.level("INFO", color=BLU)
