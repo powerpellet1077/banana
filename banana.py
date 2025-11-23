@@ -8,7 +8,7 @@ import argparse
 parser = argparse.ArgumentParser(description="upload and share files quickly with mutliple services")
 parser.add_argument("-f", "--filename", help="path of target file to upload")
 parser.add_argument("-s", "--service", help="select target service")
-parser.add_argument("-k", "--key", help="save key for service usage (catbox and dropbox)")
+parser.add_argument("-k", "--key", help="save key for service usage (catbox)")
 parser.add_argument("-t", "--time", help="time set for temporary uploads, please only choose from options as said on the readme (you can ignore this argument if you are not using temporary file hosting)")
 args = parser.parse_args()
 #INITALIZATION

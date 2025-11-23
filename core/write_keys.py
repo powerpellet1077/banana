@@ -15,7 +15,8 @@ def write_keys(logger:loguru.logger, cb=None):
                 logger.error("could not clear cb due to no cb key existing!")
             except Exception as e:
                 logger.error("could not clear cb due to error: "+str(e))
-
+    else:
+        logger.error("service name does not exist")
     kp = get_keys_path(logger)
     if kp:
         try:
