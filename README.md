@@ -73,7 +73,7 @@ cd dist
 banana
 ```
 
-or ```./banana``` for linux users
+or ```./dist/banana``` for linux users (without the file extension)
 
 If you got a response similar to this:
 
