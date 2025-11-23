@@ -5,9 +5,7 @@ This program is planning to support [DropBox](https://dropbox.com), [Catbox/Litt
 
 
 #### IMPORTANT NOTICE: 
-This program _heavily_ relies on file sharing services to function, if any of these change or stop functioning, please open a pr, issue or fork if you want.
-
-
+This program _heavily_ relies on file sharing services to function, these may change or break at any time and may take time to resolve so please expect issues...
 ### usage:
 To declare keys or userhashes, you can use the -k command to set the key for the service provided. (most services I am using will not require or need a userhash/api key so you can skip this if you want).
 
