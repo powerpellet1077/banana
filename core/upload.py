@@ -1,9 +1,8 @@
 import requests
 import loguru
 import os
-import time
 import json
-from core.constants import CB_API, FB_API, LB_API
+from core.constants import CB_API, FB_API, LB_API, UG_API
 from core.get_mimetype import get_mimetype
 def upload_cb(logger: loguru.logger, path, keys):
     logger.info("beginning send to catbox, this might take a while")
@@ -25,9 +24,7 @@ def upload_cb(logger: loguru.logger, path, keys):
             if r.text.strip():
                 return r.text.strip()
             else:
-                logger.info("waiting for a repsonse from the site...")
-                r = requests.post(CB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
-                time.sleep(0.5)
+                logger.error("no response from site, is service down?")
     else:
         logger.error("failed to upload to catbox D: "+str(r.status_code)+"/"+r.text)
 
@@ -46,10 +43,11 @@ def upload_fb(logger: loguru.logger, path):
         if d:
             return "https://filebin.net/"+d
     else:
-        logger.error("failed to upload to filebin D: "+str(r.status_code)+"/"+r.text)
+        logger.error(f"failed to upload to filebin D: {str(r.status_code)}/{r.text}")
 
 def upload_lb(logger: loguru.logger, path, t):
     logger.info("beginning send to litterbox, this might take a while")
+    logger.warning("using a temporary file service! said files will have a short and sad life :(")
     f = open(path, "rb")
     mt = get_mimetype(logger, path)
     if t not in ["1h", "12h", "24h", "72h"]:
@@ -65,8 +63,20 @@ def upload_lb(logger: loguru.logger, path, t):
             if r.text.strip():
                 return r.text.strip()
             else:
-                logger.info("waiting for a repsonse from the site...")
-                r = requests.post(LB_API, data=d, files={'fileToUpload': (os.path.basename(path), f, mt)})
-                time.sleep(0.5)
+                logger.error("no response from api, is service down?")
     else:
-        logger.error("failed to upload to litterbox D: " + str(r.status_code) + "/" + r.text)
+        logger.error(f"failed to upload to litterbox D: {str(r.status_code)}/{r.text}")
+
+def upload_ug(logger: loguru.logger, path):
+    logger.info("beginning send to uguu, this might take a while")
+    logger.warning("using a temporary file service! said files will have a short and sad life :(")
+    f = {'files[]': open(path,"rb+")}
+    r = requests.post(UG_API, files=f)
+    if r.status_code == 200:
+        while True:
+            if r.text.strip():
+                return json.loads(r.text.strip())["files"][0]["url"]
+            else:
+                logger.error("no response from api, is service down?")
+    else:
+        logger.error(f"failed to upload to uguu D: {str(r.status_code)}/{r.text}")

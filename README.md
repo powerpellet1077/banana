@@ -1,8 +1,11 @@
 # <img src="assets/banana_title_white.png" id="banana"></img>
 This is a program made to make uploading files and videos not a hassle.
 
-This program is planning to support [DropBox](https://dropbox.com), [Catbox/Litterbox](https://catbox.moe), [Uguu/Pomf](https://uguu.se), and [Filebin](https://filebin.net). (currently this only supports catbox/litterbox and filebin but feel free to change that with a pr)
-<br>IMPORTANT NOTICE: This program <u>heavily</u> relies on file sharing services to function, if any of these change or stop functioning, please open a pr, issue or fork if you want.
+This program is planning to support [DropBox](https://dropbox.com), [Catbox/Litterbox](https://catbox.moe), [Uguu/Pomf](https://uguu.se), and [Filebin](https://filebin.net). (currently this only supports catbox/litterbox, filebin and uguu but feel free to change that with a pr)
+
+
+#### IMPORTANT NOTICE: 
+This program _heavily_ relies on file sharing services to function, if any of these change or stop functioning, please open a pr, issue or fork if you want.
 
 
 ### usage:
@@ -28,7 +31,9 @@ You can also declare the time for temporary file sharing services (limited to on
 
 ``banana -f sick_ass_file.txt -s lb -t 24h``
 
-As of now, banana supports only Catbox, Litterbox and Filebin. (cb, lb and fb respectively)
+As of now, banana supports only Catbox, Litterbox, Filebin and Uguu. (cb, lb, fb and ug respectively).
+You can also list these (as well as some extra info) by running ``banana -l`` or ``banana --list``
+
 
 If you do not declare a service with -s, banana will automatically choose one for you, going in order of priority and file-specific services to services supporting different types of files and applications. 
 Catbox and litterbox restrict against the following types of files:
@@ -40,6 +45,8 @@ Catbox and litterbox restrict against the following types of files:
 Keep in mind that Catbox is limited to files of 200MB and Litterbox is limited to files of 1GB.
 
 Filebin only restricts windows executable files (at least from my limited research as I found no other people had this issue :P)
+
+The only (technically) unlimited file service is Uguu, but please do not upload dangerous software to any service provided regardless, (you will be blocked!)
 
 If you are using the windows (multi-tabbed) terminal, then just using ctrl+click on the link should make it easier to share.
 

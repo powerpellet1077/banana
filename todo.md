@@ -1,5 +1,5 @@
 ### ULTRA SECRET TODO LIST (planned features)
- - add uguu support (https://uguu.se/upload)
+ - ~~add uguu support (https://uguu.se/upload)~~
  - fix filebin support
  - imgbb support
  - dropbox support

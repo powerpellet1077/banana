@@ -3,7 +3,6 @@ import os
 import platform
 import json
 from pathlib import Path
-from os import geteuid
 def get_keys_path(logger: loguru.logger, log=True, w=True):
     if platform.system()=="Windows":
         if "APPDATA" in os.environ:
@@ -25,6 +24,7 @@ def get_keys_path(logger: loguru.logger, log=True, w=True):
                 logger.warning("no appdata environment variable found, returning null keys")
             return None
     elif platform.system()=="Linux":
+        from os import geteuid
         if geteuid()==0:
             logger.warning("do not run banana as root, this will cause issues!")
         hp = Path.home()
