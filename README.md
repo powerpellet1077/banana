@@ -14,7 +14,7 @@ you can also clear any key/userhash like this:
 
 ``banana -k clear -s cb``
 
-For reference, the keys and userhashes are stored in ``banana.json`` within the user's appdata/roaming folder. Because of this, this is why this program only (officially) supports windows at the moment, feel free to change/fix this in a pr.
+For reference, the keys and userhashes are stored in ``banana.json`` within the user's appdata/roaming folder on windows, otherwise it will be in the user's .config folder on linux.
 
 once the userhash is declared, the program will automatically use it for that service. To actually upload a file, use the -f flag and declare a path (absolute or relative)
 
@@ -39,15 +39,16 @@ Catbox and litterbox restrict against the following types of files:
 
 Keep in mind that Catbox is limited to files of 200MB and Litterbox is limited to files of 1GB.
 
-Filebin only restricts executable files (at least from my limited research as I found no other people had this issue :P)
+Filebin only restricts windows executable files (at least from my limited research as I found no other people had this issue :P)
 
 If you are using the windows (multi-tabbed) terminal, then just using ctrl+click on the link should make it easier to share.
 
-
+# Building
 For compiling you will need these dependencies:
  - Pyinstaller
  - Loguru + Requests (these can both be installed via requirements.txt)
  - Git (or just download the zip)
+
 
 First, clone or download the project: 
 
@@ -61,13 +62,18 @@ Then, compile with pyinstaller:
 ```
 pyinstaller --noconfirm --onefile --console --icon "banana.ico" --name "banana" --add-data "core;core"  "banana.py" 
 ```
-
+for linux users:
+```
+pyinstaller --noconfirm --onefile --console --name "banana" --add-data "core:core"  "./banana.py" 
+```
 Then if everything worked out, you should have your binary in ``banana/dist``
 
 ```
 cd dist
 banana
 ```
+
+or ```./banana``` for linux users
 
 If you got a response similar to this:
 

@@ -16,6 +16,8 @@ def find_carrier(logger:loguru.logger, path, keys=None, p=None, t=None):
                         return upload_cb(logger, path, keys)
                     except Exception as e:
                         logger.error("error uploading to catbox, error: "+str(e))
+                else:
+                    logger.warning("no keys found, this may cause issues")
             if s<GB and not check_lb_blacklist(path):#litterbox
                 if keys:
                     try:
