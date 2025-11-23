@@ -20,6 +20,7 @@ FB_API = "https://filebin.net/"
 LB_BLACKLISTED_FILES = ("exe", "scr", "cpl", "doc", "jar")
 LB_API = "https://litterbox.catbox.moe/resources/internals/api.php"
 #UGUU
+UG_BLACKLISTED_FILES = ()
 UG_API = "https://uguu.se/upload"
 #HELP
 HELP_SERVICES = [
@@ -27,5 +28,5 @@ HELP_SERVICES = [
     ["catbox","cb","not temporary",CB_BLACKLISTED_FILES,"userhash","file"],
     ["litterbox","lb","temporary",LB_BLACKLISTED_FILES,"none","file + time specified"],
     ["filebin","fb","not temporary",FB_BLACKLISTED_FILES,"none","file"],
-    ["uguu","ug","temporary",["none"],"none","file"]
+    ["uguu","ug","temporary",UG_BLACKLISTED_FILES,"none","file"]
 ]

@@ -11,6 +11,7 @@ parser.add_argument("-s", "--service", help="select target service w/ service id
 parser.add_argument("-k", "--key", help="save key/userhash for service usage (catbox)")
 parser.add_argument("-t", "--time", help="time set for temporary uploads (only used currently for litterbox)")
 parser.add_argument("-l", "--list", help="list available services", action='store_true')
+parser.add_argument("-p", "--prefer", help="prefer a temporary/non temporary file service (use temp or notemp to declare which perferred file upload service)")
 args = parser.parse_args()
 #INITALIZATION
 import loguru
@@ -30,6 +31,7 @@ log.level("ERROR", color=RED)
 log.level("INFO", color=BLU)
 log.level("CRITICAL", color=MAGENTA)
 #LOADING
+
 if args.list:
     make_service_list(log)
 elif args.key:
@@ -39,11 +41,21 @@ elif args.key:
     else:
         log.error("when declaring a key, please use the service flag to declare which service it should apply to")
 elif args.filename:
+    pm = None
+    if args.perfer:
+        if args.perfer.lower() in ["temp", "t"]:
+            pm="temp"
+            log.info("preferring temporary services")
+        elif args.perfer.lower() in ["notemp", "nt"]:
+            pm="notemp"
+            log.info("preferring non-temporary services")
+        else:
+            log.error(f"perfer syntax incorrect. flag can only be 'temp', 't', 'notemp' or 'nt', not '{args.perfer}'")
     k = load_keys(log)
     if args.service:
-        fc = find_carrier(log, args.filename, k, p=args.service, t=args.time)
+        fc = find_carrier(log, args.filename, k, p=args.service, t=args.time, tp=pm)
     else:
-        fc = find_carrier(log, args.filename, k, t=args.time)
+        fc = find_carrier(log, args.filename, k, t=args.time, tp=pm)
     if fc:
         log.critical("uploaded: "+fc)
     else:

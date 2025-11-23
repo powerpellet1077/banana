@@ -6,3 +6,4 @@
  - ~~litterbox (as promised)~~
  - update support
  - pastebin (or an alternative) support
+ - config (for colorful text and other stuff)

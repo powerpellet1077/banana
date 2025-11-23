@@ -5,7 +5,7 @@ This program is planning to support [DropBox](https://dropbox.com), [Catbox/Litt
 
 
 #### IMPORTANT NOTICE: 
-This program _heavily_ relies on file sharing services to function, these may change or break at any time and may take time to resolve so please expect issues...
+This program _heavily_ relies on file sharing services to function, these may change or break at any time and may take time to resolve so please expect issues...☻
 ### usage:
 To declare keys or userhashes, you can use the -k command to set the key for the service provided. (most services I am using will not require or need a userhash/api key so you can skip this if you want).
 
@@ -32,6 +32,10 @@ You can also declare the time for temporary file sharing services (limited to on
 As of now, banana supports only Catbox, Litterbox, Filebin and Uguu. (cb, lb, fb and ug respectively).
 You can also list these (as well as some extra info) by running ``banana -l`` or ``banana --list``
 
+
+You can also append ``--prefer`` or ``-p`` to make it automatically select/prefer a temporary or non-temporary service (when not explicitly declaring a service), the possible arguments are ``nt``/``notemp`` and ``t``/``temp``.
+
+``banana -f sick_ass_file.txt -p nt``
 
 If you do not declare a service with -s, banana will automatically choose one for you, going in order of priority and file-specific services to services supporting different types of files and applications. 
 Catbox and litterbox restrict against the following types of files:

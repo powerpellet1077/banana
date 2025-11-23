@@ -4,8 +4,11 @@ import loguru
 def get_mimetype(logger:loguru.logger, filename):
     try:
         ext = os.path.basename(filename).split(".")[1]
+    except IndexError:
+        logger.warning("file extension appears empty, defaulting to plain/text..")
+        return 'plain/text'
     except Exception as e:
-        logger.warning("error decoding extension for file, defaulting to plain/text..")
+        logger.warning(f"error '{str(e)}' attempting to obtain file extension, defaulting to plain/text..")
         return 'plain/text'
     mimetypes.init()
     try:

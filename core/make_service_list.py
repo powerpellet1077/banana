@@ -3,7 +3,9 @@ from core.constants import HELP_SERVICES
 
 def format_list(l):
     bss = ""
-    if len(l)==1:
+    if len(l)<=0:
+        return "none"
+    elif len(l)==1:
         return l[0]
     for o in l:
         bss+=f"{o}, "
