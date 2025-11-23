@@ -1,7 +1,7 @@
 # <img src="assets/banana_title_white.png" id="banana"></img>
 This is a program made to make uploading files and videos not a hassle.
 
-This program is planning to support [dropbox.com](DropBox), [catbox.moe](Catbox/Litterbox), [uguu.se](Uguu/Pomf), and [filebin.net](Filebin). (currently this only supports catbox/litterbox and filebin but feel free to change that with a pr)
+This program is planning to support [DropBox](dropbox.com), [Catbox/Litterbox](catbox.moe), [Uguu/Pomf](uguu.se), and [Filebin](filebin.net). (currently this only supports catbox/litterbox and filebin but feel free to change that with a pr)
 <br>IMPORTANT NOTICE: This program <u>heavily</u> relies on file sharing services to function, if any of these change or stop functioning, please open a pr, issue or fork if you want.
 
 
