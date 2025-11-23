@@ -43,7 +43,7 @@ Filebin only restricts windows executable files (at least from my limited resear
 
 If you are using the windows (multi-tabbed) terminal, then just using ctrl+click on the link should make it easier to share.
 
-# Building
+### building
 For compiling you will need these dependencies:
  - Pyinstaller
  - Loguru + Requests (these can both be installed via requirements.txt)
