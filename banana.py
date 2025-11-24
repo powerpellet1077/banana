@@ -43,10 +43,10 @@ elif args.key:
 elif args.filename:
     pm = None
     if args.prefer:
-        if args.perfer.lower() in ["temp", "t"]:
+        if args.prefer.lower() in ["temp", "t"]:
             pm="temp"
             log.info("preferring temporary services")
-        elif args.perfer.lower() in ["notemp", "nt"]:
+        elif args.prefer.lower() in ["notemp", "nt"]:
             pm="notemp"
             log.info("preferring non-temporary services")
         else:
