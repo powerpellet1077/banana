@@ -42,7 +42,7 @@ elif args.key:
         log.error("when declaring a key, please use the service flag to declare which service it should apply to")
 elif args.filename:
     pm = None
-    if args.perfer:
+    if args.prefer:
         if args.perfer.lower() in ["temp", "t"]:
             pm="temp"
             log.info("preferring temporary services")
